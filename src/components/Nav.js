@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import {ReactComponent as Logo} from './svg/Logo.svg';
 import '../css/Nav.css';
 import {ReactComponent as Hamburger} from './svg/bars-solid.svg';
+import { Link } from 'react-router-dom';
 
 
 function Nav(props) {
@@ -45,12 +46,12 @@ function Nav(props) {
       {props.withHamburger && <Hamburger ref={menuToggle} onClick={() => setMenuVisible(!menuVisible)}/>}
       {menuVisible && 
       <ul role='navigation'>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/menu">Menu</a></li>
-        <li><a href="/reservations">Reservations</a></li>
-        <li><a href="/order-online">Order Online</a></li>
-        <li><a href="/log-in">Log In</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/menu">Menu</Link></li>
+        <li><Link to="/booking">Reservations</Link></li>
+        <li><Link to="/order-online">Order Online</Link></li>
+        <li><Link to="/log-in">Log In</Link></li>
       </ul>
       }
     </nav>
