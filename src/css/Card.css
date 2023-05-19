@@ -1,0 +1,30 @@
+article.card {
+  width: 251px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 275px 1.5rem 0 1.5rem;
+  box-sizing: border-box;
+  background-color: #EDEFEE;
+  border-radius: 8px;
+  min-width: 251px;
+}
+
+article.card h3 {
+  color: #000000;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+article.card h4 {
+  color: #EE9972;
+  margin: 0 0 1rem 0;
+}
+
+article.card p {
+  color: #000000;
+  margin: 0 0 2rem 0;
+}
+
+article.card a {
+  color: #000000;
+}

@@ -1,0 +1,38 @@
+.specials article > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.specials h2 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.specials > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+a[role='button'] {
+  margin-bottom: 2rem;
+}
+
+
+@media only screen and (min-width: 820px)  {
+  .specials > div:first-child {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .specials h2,
+  a[role='button']  {
+    margin: 3rem 0;
+  }
+
+  
+}

@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import Nav from './Nav';
+import '../css/Header.css';
 
 export default function Header(props) {
   return (
   <header>
-    <Nav/>
+    <Nav withHamburger />
   </header>
   )
 }

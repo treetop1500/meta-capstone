@@ -1,0 +1,41 @@
+.intro {
+  background-color: #495E57;
+}
+.intro > div {
+  flex-direction: column;
+}
+
+.intro h1 {
+  color: #F4CE11;
+  font-size: 4rem;
+  margin: 0 0 1rem 0;
+}
+
+.intro h2{
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.intro p {
+  color: #ffffff;
+  margin: 0 0 2rem 0;
+}
+
+.intro img {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 0;
+}
+
+
+@media only screen and (min-width: 820px)  {
+  .intro > div {
+    flex-direction: row;
+  }
+  .intro img {
+    min-width: 320px;
+  }
+}
+
+

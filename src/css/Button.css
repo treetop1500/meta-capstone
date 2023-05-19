@@ -1,0 +1,11 @@
+a[role='button'] {
+  background-color: #F4CE11;
+  color: #000;
+  font-weight: bold;
+  padding: .875rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  white-space: nowrap;
+}
