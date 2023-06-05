@@ -46,12 +46,12 @@ function Nav(props) {
       {props.withHamburger && <Hamburger ref={menuToggle} onClick={() => setMenuVisible(!menuVisible)}/>}
       {menuVisible && 
       <ul role='navigation'>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/menu">Menu</Link></li>
-        <li><Link to="/booking">Reservations</Link></li>
-        <li><Link to="/order-online">Order Online</Link></li>
-        <li><Link to="/log-in">Log In</Link></li>
+        <li><Link to="/" aria-label="On Click">Home</Link></li>
+        <li><Link to="/about" aria-label="On Click">About</Link></li>
+        <li><Link to="/menu" aria-label="On Click">Menu</Link></li>
+        <li><Link to="/booking" aria-label="On Click">Reservations</Link></li>
+        <li><Link to="/order-online" aria-label="On Click">Order Online</Link></li>
+        <li><Link to="/log-in" aria-label="On Click">Log In</Link></li>
       </ul>
       }
     </nav>

@@ -89,7 +89,7 @@ export default function Specials() {
       <section className="specials">
         <div>
           <h2>This week's specials!</h2>
-          <Button title="Online Menu" link="/online-menu"/>
+          <Button title="Online Menu" link="/online-menu" aria-label="On Click"/>
         </div>
         <div className='overflow-x'>
           {specials.map((item) => (

@@ -12,7 +12,7 @@ export default function Card(props) {
     {props.description}
     </p>
     <p>
-      <a href={props.cta.link} title={props.cta.title}>{props.cta.title}</a>
+      <a href={props.cta.link} title={props.cta.title} aria-label="On Click">{props.cta.title}</a>
     </p>
   </article>
   )

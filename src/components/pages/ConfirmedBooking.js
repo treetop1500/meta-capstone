@@ -10,7 +10,7 @@ export default function BookingConfirmed() {
           <h2>Booking Confirmed!</h2>
           <p>Your reservation at Little Lemon has been placed.</p>
           <hr/>
-          <p><Link to="/">Return to the Home Page</Link></p>
+          <p><Link to="/" aria-label="On Click">Return to the Home Page</Link></p>
         </article>
       </div>
     </section>
