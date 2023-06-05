@@ -21,6 +21,7 @@ const fetchAPI = function(date) {
   }
   return result;
 };
+
 const submitAPI = function(formData) {
   return true;
 };

@@ -1,52 +1,88 @@
 
-import { useState , useRef} from "react";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 export default function BookingForm(props) {
 
   const occasions = [
-    "Birthday","Anniversary"
+    "None", "Birthday","Anniversary"
   ]
 
   const availableTimes = props.availableTimes;
   const dispatch = props.dispatch;
   const submitForm = props.submitForm;
-  const reservationDate = props.reservationDate;
-  const reservationTime = props.reservationTime;
-  const reservationGuests = props.reservationGuests;
-  const reservationOccasion = props.reservationOccasion;
-  const setReservationDate = props.setReservationDate;
-  const setReservationTime = props.setReservationTime;
-  const setReservationGuests = props.setReservationGuests;
-  const setReservationOccasion = props.setReservationOccasion;
 
-  const handleDateChange = (date) => {
-    //console.log("selected date", date);
-    setReservationDate(date);
-    dispatch({'type':'DATE_CHANGE', 'payload':date})
+  const handleDateChange = (event) => {
+    if (event.target.name === 'date') {
+      dispatch({'type':'DATE_CHANGE', 'payload':event.target.value})
+    }
   }
+
+  const validationSchema = Yup.object().shape({
+    date: Yup.date().required('Date is required'),
+    time: Yup.string().required('Time is required'),
+    guests: Yup.number().min(1, 'Minimum 1 guest').max(10, 'Maximum 10 guests').required('Number of guests is required'),
+    occasion: Yup.string().required('Occasion is required'),
+  });
+
+  const handleSubmit = (values) => {
+    // Handle form submission
+    console.log(values);
+  };
 
   return (
     <>
       <h3>Book Now!</h3>
-      <form style={{'display': 'grid', 'maxWidth': '200px', 'gap': '20px'}} onSubmit={(submitForm)}>
-        <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" value={reservationDate} onChange={e => handleDateChange(e.target.value)}/>
-        <label htmlFor="res-time">Choose time</label>
-        <select id="res-time" onChange={(e) => setReservationTime(e.target.value)} value={reservationTime}>
+
+      <Formik
+      initialValues={{
+        date: new Date(),
+        time: '',
+        guests: '',
+        occasion: 'None',
+      }}
+      validationSchema={validationSchema}
+      onSubmit={(values) => {
+        props.submitForm(values);
+      }}    >
+      {({ isValid, errors }) => (
+        <Form style={{ display: 'grid', maxWidth: '300px', gap: '20px' }} onChange={e => handleDateChange(e)}>
+        <label htmlFor="date">Date</label>
+        <Field type="date" id="date" name="date"/>
+        <ErrorMessage name="date" component="div" style={{color: 'red'}} />
+
+        <label htmlFor="time">Time</label>
+        <Field as="select" id="time" name="time" >
           {availableTimes.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
+            <option key={index} value={option}>
+              {option}
+            </option>
           ))}
-        </select>
+        </Field>
+        <ErrorMessage name="time" component="div" style={{color: 'red'}}/>
+
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" id="guests" value={reservationGuests}  onChange={e => setReservationGuests(e.target.value)}/>
+        <Field type="number" id="guests" name="guests" placeholder="1" min="1" max="10" />
+        <ErrorMessage name="guests" component="div" style={{color: 'red'}}/>
+
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" onChange={(e) => dispatch({type: 'DATE_CHANGE', payload: e.target.value})} value={reservationOccasion}>
-            {occasions.map((option, index) => (
-              <option key={index} value={option}>{option}</option>
-            ))}
-        </select>
-        <input type="submit" value="Make Your reservation"/>
-      </form>
+        <Field as="select" id="occasion" name="occasion">
+          {occasions.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </Field>
+
+        <button type="submit" disabled={!isValid}>Make Your Reservation</button>
+
+
+      </Form>
+      )}
+    </Formik>
+
+
+
     </>
   )
 }

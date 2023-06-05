@@ -4,7 +4,7 @@ import React from 'react';
 export default function OrderOnline() {
   return (
     <>
-    <section className='orderOnline'>
+    <section>
       <div>
         <article>
           <h2>Log In</h2>

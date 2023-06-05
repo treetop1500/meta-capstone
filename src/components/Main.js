@@ -6,7 +6,7 @@ import AboutPage from './pages/AboutPage';
 import OrderOnlinePage from './pages/OrderOnlinePage';
 import LogInPage from './pages/LogInPage';
 import MenuPage from './pages/MenuPage';
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import BookingConfirmed from './pages/ConfirmedBooking';
 
 export const initializeTimes = () => {
@@ -39,22 +39,14 @@ export const updateTimes = (state, action) => {
 
 function Main() {
 
-  const [reservationDate, setReservationDate] = useState('');
-  const [reservationTime, setReservationTime] = useState('');
-  const [reservationGuests, setReservationGuests] = useState('');
-  const [reservationOccasion, setReservationOccasion] = useState('');
-  const navigate = useNavigate();
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const navigate = useNavigate();
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    const formData = {
-      'date': reservationDate,
-      'time': reservationTime,
-      'guests': reservationGuests,
-      'occasion': reservationOccasion
-    };
-    MakeReservation(formData);
+  
+  const submitForm = (formValues) => {
+    console.log(formValues);
+
+    MakeReservation(formValues);
   }
 
   const MakeReservation = (formData) => {
@@ -73,14 +65,6 @@ function Main() {
                 availableTimes={availableTimes} 
                 dispatch={dispatch} 
                 submitForm={submitForm} 
-                reservationDate = {reservationDate}
-                reservationTime = {reservationTime}
-                reservationGuests = {reservationGuests}
-                reservationOccasion = {reservationOccasion}
-                setReservationDate = {setReservationDate}
-                setReservationTime = {setReservationTime}
-                setReservationGuests = {setReservationGuests}
-                setReservationOccasion = {setReservationOccasion}
                 />}></Route>
               <Route path="/about" element={<AboutPage />}></Route>
               <Route path="/menu" element={<MenuPage />}></Route>
